@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ product.name }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="navbar">
+
+    <a href="/">Home</a>
+
+    <a href="/products-page">Products</a>
+
+</div>
+
+<div class="card">
+    <h2> Product Info</h2>
+
+    <p><b>Name:</b> {{ product.name }}</p>
+    <p><b>Category:</b> {{ product.category }}</p>
+    <p><b>Price:</b> ${{ product.price }}</p>
+    <p><b>Stock:</b> {{ product.stock }}</p>
+
+    <p><b>Average Rating:</b> ⭐ {{ average }}</p>
+</div>
+
+    <!-- Add Review -->
+    <h2>Reviews</h2>
+
+    <div class="card">
+
+        <button onclick="toggleReviewForm()" id="reviewBtn">
+            ➕ Add Review
+        </button>
+
+        <div id="reviewForm"
+             style="display:none; margin-top:20px;">
+
+            <form method="POST"
+                  action="/product/{{ product.PK.split('#')[1] }}/add-review">
+
+                <p>Customer Name</p>
+
+                <input type="text"
+                       name="customer_name"
+                       required>
+
+                <p>Rating (1-5)</p>
+
+                <input type="number"
+                       name="rating"
+                       min="1"
+                       max="5"
+                       required>
+
+                <p>Comment</p>
+
+                <textarea name="comment"
+                          rows="4"
+                          cols="40"
+                          required></textarea>
+
+                <br><br>
+
+                <button type="submit">
+                    Submit Review
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    {% if reviews %}
+
+        {% for review in reviews %}
+
+        <div class="card">
+
+            <h3>{{ review.customer_name }}</h3>
+
+            <p>⭐ {{ review.rating }}/5</p>
+
+            <p>{{ review.comment }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="card">
+            <p>No reviews yet.</p>
+        </div>
+
+    {% endif %}
+
+    <div class="card">
+
+    <a href="/update-product/{{ product.PK.split('#')[1] }}">
+        <button> Update Product</button>
+    </a>
+
+    <a href="/delete-product/{{ product.PK.split('#')[1] }}">
+        <button> Delete Product</button>
+    </a>
+
+    <a href="/products-page">
+        <button> Back To Products</button>
+    </a>
+
+</div>
+<script>
+
+function toggleReviewForm() {
+
+    let form = document.getElementById("reviewForm");
+    let btn = document.getElementById("reviewBtn");
+
+    if (form.style.display === "none") {
+
+        form.style.display = "block";
+        btn.innerHTML = "➖ Hide Review Form";
+
+    } else {
+
+        form.style.display = "none";
+        btn.innerHTML = "➕ Add Review";
+
+    }
+}
+
+</script>
+
+</body>
+</html>

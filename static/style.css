@@ -1,0 +1,91 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe4f0, #f8c1d9);
+    margin: 0;
+    padding: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    background: linear-gradient(90deg, #8b004f, #b10063);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    color: #ffd6e8;
+}
+
+/* CONTAINER */
+.container {
+    width: 85%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* HEADINGS */
+h1 {
+    text-align: center;
+    color: #8b004f;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #a1005b;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(90deg, #8b004f, #b10063);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4d9a;
+}
+
+/* INPUTS */
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #f3c4dd;
+    border-radius: 8px;
+}
+
+/* PRODUCT GRID (IMPORTANT ) */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
